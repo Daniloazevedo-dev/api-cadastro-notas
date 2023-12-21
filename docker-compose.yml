@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+
+  api-cadastro-notas:
+    container_name: api-cadastro-notas
+    image: api-cadastro-notas
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+        - api-cadastro-notas-network
+    links:
+      - postgres
+    restart: always
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-notas_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-notas_user_passwd}
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+      - ./src/main/resources/db/migration/init:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    networks:
+        - api-cadastro-notas-network
+    restart: always
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    networks:
+      - api-cadastro-notas-network
+    restart: always
+    depends_on:
+      - postgres
+
+
+networks:
+  api-cadastro-notas-network:
+    driver: bridge
+
+volumes:
+    postgres:
+    pgadmin:
