@@ -20,6 +20,7 @@ services:
     container_name: postgres
     image: postgres
     environment:
+      POSTGRES_DB: ${POSTGRES_DB:-db_api_cadastro_notas}
       POSTGRES_USER: ${POSTGRES_USER:-notas_user}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-notas_user_passwd}
       PGDATA: /data/postgres
@@ -52,8 +53,11 @@ services:
 
 networks:
   api-cadastro-notas-network:
+    name: api-cadastro-notas-network
     driver: bridge
 
 volumes:
     postgres:
+      name: postgres-volume
     pgadmin:
+      name: pgadmin-volume
