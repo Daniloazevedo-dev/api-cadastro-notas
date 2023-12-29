@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://postgres:5432/db_api_cadastro_notas
+    username: notas_user
+    password: notas_user_passwd
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: validate
+  properties:
+    dialect: org.hibernate.dialect.PostgreSQL9Dialect
