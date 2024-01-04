@@ -10,6 +10,7 @@ public class testeController {
 
     @GetMapping
     public String teste() {
+
         return "Teste";
     }
 
