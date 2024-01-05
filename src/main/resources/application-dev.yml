@@ -15,4 +15,8 @@ spring:
       ddl-auto: validate
     properties:
       use_jdbc_metadata_defaults: false
+  flyway:
+    locations: classpath:db/migration
+
+
 
