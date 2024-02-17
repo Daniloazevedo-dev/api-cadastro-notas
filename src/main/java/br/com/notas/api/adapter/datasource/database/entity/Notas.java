@@ -1,9 +1,9 @@
-package br.com.notas.api.datasource.database.entity;
+package br.com.notas.api.adapter.datasource.database.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 
 @Getter
