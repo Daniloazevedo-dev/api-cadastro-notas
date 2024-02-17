@@ -1,6 +1,6 @@
-package br.com.notas.api.repository;
+package br.com.notas.api.adapter.datasource.database.repository;
 
-import br.com.notas.api.datasource.database.entity.Notas;
+import br.com.notas.api.adapter.datasource.database.entity.Notas;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
