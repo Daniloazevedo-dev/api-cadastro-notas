@@ -32,7 +32,7 @@
 ### Para rodar Api com Docker:
 
 * Criar imagem: `docker build . -t api-cadastro-notas:latest`
-* Rodar em container: `docker run -p 8080:8080 -d --name api-cadastro-notas` 
+* Rodar em container: `docker run -p 8080:8080 -d --name api-cadastro-notas api-cadastro-notas`
 
 ### Criar banco:
 
