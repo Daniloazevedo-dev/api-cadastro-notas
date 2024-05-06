@@ -1,6 +1,6 @@
 package br.com.notas.api.adapter.http.dto;
 
-import br.com.notas.api.adapter.datasource.database.entity.Notas;
+import br.com.notas.api.adapter.datasource.database.entity.Nota;
 import lombok.*;
 
 import java.util.List;
@@ -18,6 +18,6 @@ public class UsuarioDTO {
  
     private String email;
 
-    private List<Notas> notas;
+    private List<Nota> notas;
 
 }

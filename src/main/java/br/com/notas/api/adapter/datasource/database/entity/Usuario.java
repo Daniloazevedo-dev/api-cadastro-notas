@@ -1,9 +1,22 @@
 package br.com.notas.api.adapter.datasource.database.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -16,10 +29,9 @@ import java.util.List;
 public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario_sequence")
-    @SequenceGenerator(name = "usuario_sequence", sequenceName = "usuario_seq", allocationSize = 1)
+    @UuidGenerator
     @Column(name = "ID")
-    private Long id;
+    private UUID id;
 
     @Column(name = "NOME")
     private String nome;
@@ -29,6 +41,6 @@ public class Usuario {
 
     @OneToMany
     @JoinTable(name = "USUARIO", joinColumns = @JoinColumn(name = "USUARIO_ID"))
-    private List<Notas> notas;
+    private List<Nota> notas;
 }
 

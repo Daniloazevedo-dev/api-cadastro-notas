@@ -1,10 +1,21 @@
 package br.com.notas.api.adapter.datasource.database.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -12,15 +23,14 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Builder
-@Table(name = "NOTAS")
+@Table(name = "NOTA")
 @EqualsAndHashCode(of = "id")
-public class Notas {
+public class Nota {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "notas_sequence")
-    @SequenceGenerator(name = "notas_sequence", sequenceName = "notas_seq", allocationSize = 1)
+    @UuidGenerator
     @Column(name = "ID")
-    private Long id;
+    private UUID id;
 
     @Column(name = "DESCRICAO")
     private String descricao;
